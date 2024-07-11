@@ -2,11 +2,11 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L./minilibx-linux -lmlx -L/usr/X11R6/lib -lXext -lX11 -lm
 FRACT = fract
-SRC_F = fractol.c
+SRC_F = fractol.c init.c utils.c mandelbrot.c julia.c
 
 OBJF = $(SRC_F:.c=.o)
 
-all : $(FRACT)
+all : $(FRACT) clean
 
 $(FRACT) : $(OBJF)
 	$(CC) $(CFLAGS) -o $(FRACT) $(OBJF) $(LDFLAGS)

@@ -6,8 +6,23 @@
 /*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:51:00 by atahtouh          #+#    #+#             */
-/*   Updated: 2024/07/03 11:52:55 by atahtouh         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:06:26 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int ft_strcmp(char *s1, char *s2)
+{
+    int i;
+    
+    i = 0;
+    while (s1[i] )
+    {
+        if(s1[i] == s2[i])
+            i++;
+        else
+            return(0);
+    }
+    return(1);
+}
