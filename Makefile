@@ -1,22 +1,24 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L./minilibx-linux -lmlx -L/usr/X11R6/lib -lXext -lX11 -lm
-FRACT = fract
-SRC_F = fractol.c init.c utils.c mandelbrot.c julia.c
+FRACT = fractol
+SRC_F = fractal/fractol.c fractal/init.c fractal/utils.c fractal/mandelbrot.c fractal/julia.c\
+	fractal/hook.c fractal/burning_ship.c
 
 OBJF = $(SRC_F:.c=.o)
 
-all : $(FRACT) clean
+all: $(FRACT)
 
-$(FRACT) : $(OBJF)
-	$(CC) $(CFLAGS) -o $(FRACT) $(OBJF) $(LDFLAGS)
+$(FRACT): $(OBJF)
+	@$(CC) $(CFLAGS) -o $(FRACT) $(OBJF) $(LDFLAGS)
+	@echo "Compilation done."
 
-clean :
-	rm -f $(OBJF)
+clean:
+	@rm -f $(OBJF)
 
-fclean : clean
-	rm -f $(FRACT)
+fclean: clean
+	@rm -f $(FRACT)
 
-re : clean all
+re: clean all
 
-.PHONY : all clean fclean re 
+.PHONY: all clean fclean re
