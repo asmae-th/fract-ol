@@ -118,8 +118,8 @@ You can also pass a custom complex number for Julia:
 
 ## 🧑‍💼 Author
 
-Made with curiosity and pixels by [Asmae TAHTOUH]
-This project was built as part of the 42 school curriculum.
+-Made with curiosity and pixels by Asmae TAHTOUH
+-This project was built as part of the 42 school curriculum.
 
 ---
 
