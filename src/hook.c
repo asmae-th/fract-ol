@@ -6,11 +6,11 @@
 /*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:54:37 by atahtouh          #+#    #+#             */
-/*   Updated: 2024/07/23 12:33:52 by atahtouh         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:31:41 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 void	ft_exit(t_fractol *f)
 {
@@ -44,11 +44,11 @@ int	funct_ptr(int x_event, t_fractol *f)
 	if (x_event == 65307)
 		ft_exit(f);
 	if (x_event == 65361)
-		f->offset_x -= 0.1;
+		f->offset_x += 0.1;
 	if (x_event == 65362)
 		f->offset_y += 0.1;
 	if (x_event == 65363)
-		f->offset_x += 0.1;
+		f->offset_x -= 0.1;
 	if (x_event == 65364)
 		f->offset_y -= 0.1;
 	if (x_event == 65453)
@@ -74,8 +74,8 @@ int	mouse_move(int key, int x, int y, t_fractol *fract)
 	double	mouse_im;
 	double	new_zoom;
 
-	mouse_re = (x - W / 2.0) * 4.0 / W / fract->zoom + fract->offset_x;
-	mouse_im = (y - H / 2.0) * 4.0 / H / fract->zoom + fract->offset_y;
+	mouse_re = (x - (W / 2.0)) / W / fract->zoom + fract->offset_x;
+	mouse_im = (y - (H / 2.0)) / H / fract->zoom + fract->offset_y;
 	if (key == 4)
 		new_zoom = fract->zoom * 1.15;
 	else if (key == 5)
@@ -86,9 +86,9 @@ int	mouse_move(int key, int x, int y, t_fractol *fract)
 	{
 		fract->zoom = new_zoom;
 		fract->offset_x = mouse_re
-			- (x - W / 2.0) * 4.0 / W / fract->zoom;
+			- (x - W / 2.0) / W / fract->zoom;
 		fract->offset_y = mouse_im
-			- (y - H / 2.0) * 4.0 / W / fract->zoom;
+			- (y - H / 2.0) / W / fract->zoom;
 		draw_fractal(fract);
 	}
 	return (0);

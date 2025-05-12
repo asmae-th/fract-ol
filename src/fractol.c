@@ -6,11 +6,11 @@
 /*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 10:02:42 by atahtouh          #+#    #+#             */
-/*   Updated: 2024/07/23 12:18:20 by atahtouh         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:31:38 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 double	ft_calcule(char *str, int i)
 {
@@ -26,7 +26,21 @@ double	ft_calcule(char *str, int i)
 		i++;
 		j++;
 	}
+	while (str[i] && str[i] == ' ')
+		i++;
+	if (str[i])
+		ft_error("args non valid");
 	return (reslt2 / ft_pow(10, j));
+}
+
+void	ft_check_args(char *str, int i)
+{
+	while (str[i])
+	{
+		if (str[i] == '+' || str[i] == '-')
+			ft_error("args non valid");
+		i++;
+	}
 }
 
 double	ft_atof(char *str)
@@ -50,6 +64,7 @@ double	ft_atof(char *str)
 	}
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 		reslt1 = reslt1 * 10 + str[i++] - '0';
+	ft_check_args(str, i);
 	if (str[i] && str[i] == '.')
 		reslt2 = ft_calcule(str, i);
 	else
@@ -86,17 +101,22 @@ int	main(int ac, char **av)
 	if (ac >= 2 && ft_check(ac, av) == 1)
 	{
 		f = malloc(sizeof(t_fractol));
-		f->name = av[1];
 		if (ac > 2)
 		{
-			f->rj = ft_atof(av[2]);
-			f->ij = ft_atof(av[3]);
+			if ((ft_valid(av[2]) == 1) && (ft_valid(av[3]) == 1))
+			{
+				f->rj = ft_atof(av[2]);
+				f->ij = ft_atof(av[3]);
+			}
+			else
+				error(f);
 		}
-		init_fract (f);
+		init_fract(f, av);
 		init_mlx_fract (f);
 		draw_fractal (f);
 		mlx_mouse_hook (f->win, mouse_hook, f);
 		mlx_key_hook (f->win, funct_ptr, f);
+		mlx_hook(f->win, 17, 0, handle_window_close, f);
 		mlx_loop (f->mlx_ptr);
 	}
 	else

@@ -6,21 +6,22 @@
 /*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 10:15:34 by atahtouh          #+#    #+#             */
-/*   Updated: 2024/07/23 12:34:30 by atahtouh         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:31:43 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
-void	init_fract(t_fractol *f)
+void	init_fract(t_fractol *f, char **av)
 {
+	f->name = av[1];
 	f->x = 0;
 	f->y = 0;
 	f->color = 0x1C2C99;
-	f->offset_x = 0;
-	f->offset_y = 0;
-	f->max_iter = 42;
-	f->zoom = 1.0;
+	f->offset_x = 0.0;
+	f->offset_y = 0.0;
+	f->max_iter = 40;
+	f->zoom = 0.2;
 }
 
 void	init_mlx_fract(t_fractol *f)

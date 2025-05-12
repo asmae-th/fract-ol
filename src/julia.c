@@ -6,11 +6,11 @@
 /*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 10:45:40 by atahtouh          #+#    #+#             */
-/*   Updated: 2024/07/22 23:30:04 by atahtouh         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:31:45 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 void	julia(t_fractol *f)
 {
@@ -36,4 +36,10 @@ void	julia(t_fractol *f)
 		color_pixel(f, f->x, f->y, 0x000000);
 	else
 		color_pixel(f, f->x, f->y, f->color * i);
+}
+
+int	handle_window_close(t_fractol *f)
+{
+	ft_exit(f);
+	return (0);
 }

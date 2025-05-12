@@ -2,8 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L./minilibx-linux -lmlx -L/usr/X11R6/lib -lXext -lX11 -lm
 FRACT = fractol
-SRC_F = fractal/fractol.c fractal/init.c fractal/utils.c fractal/mandelbrot.c fractal/julia.c\
-	fractal/hook.c fractal/burning_ship.c
+SRC_F = fractol.c init.c utils.c mandelbrot.c julia.c hook.c burning_ship.c
 
 OBJF = $(SRC_F:.c=.o)
 

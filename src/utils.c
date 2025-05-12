@@ -6,17 +6,19 @@
 /*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:51:00 by atahtouh          #+#    #+#             */
-/*   Updated: 2024/07/23 12:03:01 by atahtouh         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:31:53 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
+	if (ft_strlen(s1) != ft_strlen(s2))
+		return (0);
 	while (s2[i])
 	{
 		if (s1[i] == s2[i])
@@ -43,11 +45,15 @@ void	ft_put_msg(int i)
 {
 	if (i == 1)
 	{
-		ft_putstr_fd("entrer 2 args : \n", 1);
-		ft_putstr_fd("enter mandelbrot\n", 1);
-		ft_putstr_fd("OR \n", 1);
-		ft_putstr_fd("enter julia with 2 double number\n", 1);
+		ft_putstr_fd("Enter 2 arguments ✌️​ :\n", 1);
+		ft_putstr_fd("Enter 'mandelbrot'\n", 1);
+		ft_putstr_fd("OR\n", 1);
+		ft_putstr_fd("Enter 'ship'🚢​\n", 1);
+		ft_putstr_fd("OR\n", 1);
+		ft_putstr_fd("Enter 'julia' with 2 double numbers\n", 1);
 	}
+	if (i == 0)
+		ft_putstr_fd("Enter 'julia' with 2 valid double numbers\n", 1);
 }
 
 double	ft_pow(int a, int b)
